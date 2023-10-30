@@ -1,0 +1,60 @@
+.container {
+    box-shadow: 1px 2px 3px #eee;
+    overflow-x: hidden; 
+}
+
+.desktopNavigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+
+}
+
+.container a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    display: block;
+}
+.logo {
+    height: 3em;
+}
+
+.container .activeLink  {
+    color: #088d77;
+    font-style: italic;
+}
+
+/*////////mobile styles///*/
+.mobileDropDown {
+    position: absolute;
+    background-color: #edf4f3;
+    right: -100%;
+    top: 90px;
+    transition: right 0.3s;
+    z-index: 100;
+    height: 100vh;  /* Make it full height */
+    width: 100%;
+    border-top: solid 1px #02E2BD;
+    
+}
+.mobileNavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.mobileNavBar button {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.mobileDropDown a {
+    margin: 5px auto;
+
+}
+
