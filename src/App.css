@@ -6,6 +6,10 @@
   overflow-x: hidden;
 }
 
+.ht-100vh {
+  min-height: 100vh;
+}
+
 /*/text align center//*/
 .center {
   text-align: center;
@@ -14,6 +18,14 @@
 .pd-vt {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.bg-light-gray{
+  background-color: #fafafa;
+}
+
+.page_container {
+  height: 100vh;
 }
 /*///////////////////////////
 /////Horizontal Padding/////////////////
@@ -55,16 +67,16 @@
   /* For large desktops or screens */
   @media (min-width: 1280px) {
     .pd-hz {
-      padding-left: 15rem; /* 192px */
-      padding-right: 15rem; /* 192px */
+      padding-left: 12rem; /* 192px */
+      padding-right: 12rem; /* 192px */
     }
   }
   
   
   @media (min-width: 1920px) {
     .pd-hz {
-      padding-left: 20rem; /* 256px */
-      padding-right: 20rem; /* 256px */
+      padding-left: 16rem; /* 256px */
+      padding-right: 16rem; /* 256px */
     }
   }
 

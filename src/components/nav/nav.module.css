@@ -1,5 +1,6 @@
 .container {
-    box-shadow: 1px 2px 3px #eee;
+    box-shadow: 1px 2px 4px #ccc;
+    margin-bottom: 3px;
 }
 
 .desktopNavigation {

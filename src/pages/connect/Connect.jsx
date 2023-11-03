@@ -10,6 +10,8 @@ const Connect = () => {
          {/*/Social Links//*/}
             <h2>Connect With Me</h2>
             <div>
+
+            
             <Link target="_blank" to="https://www.linkedin.com/in/ken1098/" className={styles.socialLink}>
                 <FontAwesomeIcon icon={faLinkedin} className={styles.icon} id={styles.linkedin}/>
                 <p>LinkedIn</p>
