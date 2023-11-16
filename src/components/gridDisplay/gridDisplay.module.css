@@ -10,6 +10,82 @@
     height: 150px;
 }
 
+
+.gridItem {
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 1px 3px 12px #eee;
+    border: solid 1px #eee;
+    
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex > div {
+    flex:1;
+}
+
+
+
+
+.icon {
+    margin-right: 5px;
+}
+
+/* .gridItem a {
+    text-decoration: none;
+    display: block;
+    color: rgb(4, 4, 244);
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+} */
+
+.github_button {
+    background:linear-gradient(to right, #6f45e2, #af88d3);
+    margin-right: 3px;
+ 
+}
+
+.youtube_button {
+    background:linear-gradient(to right, #ff4e50, #ff0909);
+}
+
+.title {
+    margin: 1px auto 3px auto;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.description {
+    margin: 10px auto;
+    color:#474747
+}
+
+.textContainer {
+    padding: 20px;
+    padding-top: 10px;
+}
+
+.educationItem a {
+    text-decoration: none;
+    color: blue;
+}
+
+.source {
+    font-size: 16px;
+    font-style: italic;
+    color: #474747;
+}
+
+
+
 @media (min-width: 680px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
@@ -27,61 +103,3 @@
         grid-template-columns: repeat(4, 1fr);
     }
 }
-
-.gridItem {
-    padding: 16px;
-    background-color: #fff;
-    border-radius: 14px;
-    box-shadow: 1px 3px 12px #eee;
-    border: solid 1px #eee;
-}
-
-.flex{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.flex > div {
-    flex:1;
-}
-
-
-
-
-
-
-.icon {
-    margin-right: 5px;
-}
-
-.gridItem a {
-    text-decoration: none;
-    display: block;
-    color: rgb(4, 4, 244);
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.github_button {
-    background:linear-gradient(to right, #6f45e2, #af88d3);
-    margin-right: 3px;
- 
-}
-
-.youtube_button {
-    background:linear-gradient(to right, #ff4e50, #ff0909);
-}
-
-.title {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.description {
-    margin: 10px auto;
-}
-
