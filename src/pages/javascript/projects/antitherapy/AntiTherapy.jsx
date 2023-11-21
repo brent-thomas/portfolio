@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styles from './antitherapy.module.css'
 
 const nameInsults = [
@@ -16,43 +16,18 @@ const getRandomInsult = () => {
     return nameInsults[randomIndex];
 };
 
-// async function sendChatRequest(userInput) {
-//     const requestOptions = {
-//         method: 'POST',
-//         mode: 'cors',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ user_input: userInput })
-//     };
 
-//     try {
-//         const response = await fetch('https://3.227.50.118/chat', requestOptions);
-//         const data = await response.json();
-//         console.log(data); // Logging the response
-//         // Handle the response data as needed
-//     } catch (error) {
-//         console.error('Error during fetch:', error);
-//         // Handle the error appropriately
-//     }
-// }
-
-const handleSendMessage = () => {
-    const userInput = 'Hello, how are you?'; // Replace with actual user input
-    sendChatRequest(userInput);
+const Message = ({ message }) => {
+    return (
+        <div className={styles.message}>
+            <img src={message.avatar} alt="Avatar" className={styles.avatar} />
+            <p className={styles.text}>{message.text}</p>
+        </div>
+    );
 };
 
-const Message = (props) => {
-    return(
-        <div className={styles.message}>
-            <img src={props.message.avatar} className={styles.avatar} />
-            <p className={styles.text}>
-                {props.message.text}
-            </p>
-        </div>
-    )
-}
-
-
 const AntiTherapy = () => {
+    const chatboxRef = useRef(null);
     const [inputText, setInputText] = useState('')
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState([
@@ -62,33 +37,70 @@ const AntiTherapy = () => {
         }
     ])
 
+    useEffect(() => {
+        if (chatboxRef.current) {
+            chatboxRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, [messages]);
+
+
     const handleSubmit = () => {
         if (inputText) {
-            setLoading(true)
+            setLoading(true);
+    
+            // Add user's input to the messages array
             const newMessage = {
                 avatar: "https://dbl9c3jtrxi8u.cloudfront.net/koala_avatar.png",
                 text: inputText
             };
-            const updatedMessages = [...messages, newMessage]; // Add user's message and loading indicator
+            setMessages(messages => [...messages, newMessage]);
+    
             setInputText('');
-            setMessages(updatedMessages);
-            // Check if it's the user's first reply (second message in the array)
+    
             if (messages.length === 1) {
+                // Send insult after first user input
                 setTimeout(() => {
-                const insultMessage = {
-                    avatar: "https://dbl9c3jtrxi8u.cloudfront.net/maggie_bot_avatar.png",
-                    text: getRandomInsult()
-                    
-                };
-                const updatedMessagesWithInsult = [...updatedMessages, insultMessage];
-                setMessages(updatedMessagesWithInsult);
-                setLoading(false); 
+                    const insultMessage = {
+                        avatar: "https://dbl9c3jtrxi8u.cloudfront.net/maggie_bot_avatar.png",
+                        text: getRandomInsult()
+                    };
+                    setMessages(messages => [...messages, insultMessage]);
+                    setLoading(false);
                 }, 3000);
-            } else{
-                setLoading(false)
+            } else {
+                // Fetch request for subsequent inputs
+                setTimeout(() => {
+                    fetch('https://api.itsnotabugitsafeature.com/api/chat', {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_input: inputText })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const botMessage = {
+                            avatar: "https://dbl9c3jtrxi8u.cloudfront.net/maggie_bot_avatar.png",
+                            text: data.response
+                        };
+                        setMessages(messages => [...messages, botMessage]);
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                    })
+                    .finally(() => {
+                        setLoading(false);
+                    });
+                }, 3000);
             }
-            }
-};
+        }
+    };
+    
+    
 
   return (
     <div>
@@ -98,7 +110,7 @@ const AntiTherapy = () => {
     
     <div className={styles.container}>
         
-        <div className={styles.chatbox}>
+        <div className={styles.chatbox} ref={chatboxRef}>
             {messages.map((message,index)=>{
                 return(
                     <Message message={message} key={index}/>
@@ -127,26 +139,7 @@ const AntiTherapy = () => {
                 onChange={(e) => setInputText(e.target.value)}
             />
             <button type="button" onClick={()=>{
-                const userInput = "Hello, how are you?"; 
-                fetch('http://3.227.50.118/chat', {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user_input: userInput })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response:', data);
-                    // Additional handling of the response data if necessary
-                })
-                .catch(error => {
-                    console.error('Fetch error:', error);
-                });
+               handleSubmit()
             }}>Submit</button>
         </div>
     </div>
