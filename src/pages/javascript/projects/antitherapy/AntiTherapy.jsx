@@ -16,6 +16,29 @@ const getRandomInsult = () => {
     return nameInsults[randomIndex];
 };
 
+// async function sendChatRequest(userInput) {
+//     const requestOptions = {
+//         method: 'POST',
+//         mode: 'cors',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({ user_input: userInput })
+//     };
+
+//     try {
+//         const response = await fetch('https://3.227.50.118/chat', requestOptions);
+//         const data = await response.json();
+//         console.log(data); // Logging the response
+//         // Handle the response data as needed
+//     } catch (error) {
+//         console.error('Error during fetch:', error);
+//         // Handle the error appropriately
+//     }
+// }
+
+const handleSendMessage = () => {
+    const userInput = 'Hello, how are you?'; // Replace with actual user input
+    sendChatRequest(userInput);
+};
 
 const Message = (props) => {
     return(
@@ -103,7 +126,28 @@ const AntiTherapy = () => {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
             />
-            <button type="button" onClick={()=>{handleSubmit()}}>Submit</button>
+            <button type="button" onClick={()=>{
+                const userInput = "Hello, how are you?"; 
+                fetch('http://3.227.50.118/chat', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_input: userInput })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response:', data);
+                    // Additional handling of the response data if necessary
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+            }}>Submit</button>
         </div>
     </div>
     </div>

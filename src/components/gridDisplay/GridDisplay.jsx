@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './GridDisplay.module.css';
+import styles from './gridDisplay.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
