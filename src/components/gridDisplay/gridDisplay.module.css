@@ -3,85 +3,69 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 16px;
+    align-items: flex-start;
 }
-
-.itemImg {
-    width: 100%;
-    height: 150px;
-}
-
 
 .gridItem {
-    background-color: #fff;
-    border-radius: 14px;
-    box-shadow: 1px 3px 12px #eee;
-    border: solid 1px #eee;
-    
+    background: #f9f9f9;
+    border: solid 1px #ccc;
+    padding: 5px;
 }
 
-.flex{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.gridItem img {
+    height: 75px;
+    width: 75px;
 }
 
-.flex > div {
-    flex:1;
-}
-
-
-
-
-.icon {
-    margin-right: 5px;
-}
-
-/* .gridItem a {
-    text-decoration: none;
-    display: block;
-    color: rgb(4, 4, 244);
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 5px;
-} */
-
-.github_button {
-    background:linear-gradient(to right, #6f45e2, #af88d3);
-    margin-right: 3px;
- 
-}
-
-.youtube_button {
-    background:linear-gradient(to right, #ff4e50, #ff0909);
+.titleContainer {
+    padding: 5px;
+    padding-bottom: none;
+    background-color: #edf6fb;
+    margin-bottom: 5px;
+    border: solid 1px #C0E6FF;
 }
 
 .title {
-    margin: 1px auto 3px auto;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.description {
-    margin: 10px auto;
-    color:#474747
-}
-
-.textContainer {
-    padding: 20px;
-    padding-top: 10px;
-}
-
-.educationItem a {
-    text-decoration: none;
-    color: blue;
+    font-weight: bold;
 }
 
 .source {
-    font-size: 16px;
+    color: #0d0fa8;
     font-style: italic;
-    color: #474747;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.linksContainer {
+    display: flex;
+}
+
+.linksContainer a  {
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    padding: 5px;
+    background: #edf3f5;
+    border: solid 1px #ccc;
+    color: blue;
+    margin-right: 5px;
+    border-radius: 1px;
+}
+
+a.GithubLink {
+    background: #faf4fd;
+    color: #5E2382;
+    border: solid 1px #5E2382;
+}
+
+a.YoutubeLink {
+    background-color: #fff9f9;
+    color: #cf1515;
+    border: solid 1px #cf1515;
+}
+
+.FAicon {
+    margin-right: 5px;
 }
 
 

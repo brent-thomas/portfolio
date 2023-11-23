@@ -1,21 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styles from './antitherapy.module.css'
 
-const nameInsults = [
-    "Wow, what a great name... How can I assist you today?",
-    "Wow, with a name like that, you definitely were an accident. How's your day going?",
-    "Ha. You thought I cared what your name was. Need some advice?",
-    "Is that the best your parents could come up with? How can I help?",
-    "Your name must be a real conversation starter... for all the wrong reasons. Tell me, what's on your mind?",
-    "I've heard better names from a random name generator. How's life treating you?",
-    "Did your parents lose a bet when they named you? What can I do for you today?"
-  ];
-  
-const getRandomInsult = () => {
-    const randomIndex = Math.floor(Math.random() * nameInsults.length);
-    return nameInsults[randomIndex];
-};
-
 
 const Message = ({ message }) => {
     return (
@@ -33,19 +18,20 @@ const AntiTherapy = () => {
     const [messages, setMessages] = useState([
         {
             avatar: "https://dbl9c3jtrxi8u.cloudfront.net/maggie_bot_avatar.png",
-            text: "Welcome to AntiTherapy. I'm your virtual therapist, Maggie. What's your name?"
+            text: "Welcome to AntiTherapy. I'm your virtual therapist, Maggie. What's on your mind today?"
         }
     ])
 
     useEffect(() => {
-        if (chatboxRef.current) {
-            chatboxRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        const chatbox = chatboxRef.current;
+        if (chatbox) {
+            chatbox.scrollTop = chatbox.scrollHeight;
         }
     }, [messages]);
 
 
     const handleSubmit = () => {
-        if (inputText) {
+        if (inputText && inputText.length > 1) {
             setLoading(true);
     
             // Add user's input to the messages array
@@ -57,17 +43,7 @@ const AntiTherapy = () => {
     
             setInputText('');
     
-            if (messages.length === 1) {
-                // Send insult after first user input
-                setTimeout(() => {
-                    const insultMessage = {
-                        avatar: "https://dbl9c3jtrxi8u.cloudfront.net/maggie_bot_avatar.png",
-                        text: getRandomInsult()
-                    };
-                    setMessages(messages => [...messages, insultMessage]);
-                    setLoading(false);
-                }, 3000);
-            } else {
+            
                 // Fetch request for subsequent inputs
                 setTimeout(() => {
                     fetch('https://api.itsnotabugitsafeature.com/api/chat', {
@@ -96,7 +72,7 @@ const AntiTherapy = () => {
                         setLoading(false);
                     });
                 }, 3000);
-            }
+            
         }
     };
     
@@ -137,6 +113,11 @@ const AntiTherapy = () => {
                 placeholder='Enter A Message'
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        handleSubmit();
+                    }
+                }}
             />
             <button type="button" onClick={()=>{
                handleSubmit()

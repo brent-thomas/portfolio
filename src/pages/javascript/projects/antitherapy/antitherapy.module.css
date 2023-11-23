@@ -2,7 +2,7 @@
     font-family: 'Roboto', sans-serif;
     flex-direction: column;
     justify-content: space-between;
-    height: 70vh; 
+    height: 75vh; 
     padding: 10px;
     position: relative;
 }
@@ -29,6 +29,8 @@
     height: 90%;
     margin-bottom: 10px;
     padding: 20px;
+    border-top: solid 5px #0F2559;
+    border-radius: 0px;
 }
 
 
@@ -57,8 +59,8 @@
 .input button {
     width: 15%;
     outline: none;
-    border:solid 1px #2881b9;
-    background: #2881b9;
+    border:solid 1px #0F2559;
+    background: #0F2559;
     color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;

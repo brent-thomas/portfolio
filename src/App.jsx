@@ -10,6 +10,16 @@ import Javascript from './pages/javascript/Javascript';
 import { useEffect } from 'react';
 import AntiTherapy from './pages/javascript/projects/antitherapy/AntiTherapy';
 
+function ConditionalNav() {
+  const location = useLocation();
+
+  if (location.pathname.includes('/projects')) {
+      return null; // Don't render Nav if the URL includes '/projects'
+  }
+
+  return <Nav />; // Render Nav otherwise
+}
+
 function App() {
   const [count, setCount] = useState(0)
   
@@ -17,7 +27,8 @@ function App() {
 
   return (
     <Router>
-   
+    
+    <ConditionalNav /> {/* Use ConditionalNav here */}
       <div className='pd-hz pd-vt ht-100vh'>
         <Routes>
             <Route path="/" element={<Home/>} />
