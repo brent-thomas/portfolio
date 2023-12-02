@@ -15,6 +15,16 @@ const items = [
   },
   {
     type:'project',
+    title:'Grocery Store Inventory',
+    description:'The Grocery Inventory Management System, developed in Python with SQLAlchemy, is a comprehensive tool for managing grocery inventories. It features functionalities like product detail viewing, inventory analysis, and data backup, ideal for streamlining inventory processes in small to medium grocery stores.',
+    links: [
+      {
+        Github: 'https://github.com/brent-thomas/Grocery-Store-Inventory'
+      }
+    ]
+  },
+  {
+    type:'project',
     title: 'Basketball Stats Tool',
     description: 'A Python-based command-line application for managing basketball team statistics, featuring data import, player balancing, and detailed statistical displays. This tool streamlines team organization by balancing player experience, displaying comprehensive team stats, and offering a user-friendly menu interface.',
     links:[
