@@ -15,6 +15,17 @@ const items = [
   },
   {
     type:'project',
+    title: 'Pet Shelter Analysis',
+    description: `A data-driven exploration of the Austin Animal Shelter, this project leverages Python and Pandas to analyze trends in animal intake and adoption. Key insights include area-specific intake patterns, breed and age group adoption rates, and seasonal fluctuations, providing valuable information for optimizing shelter operations and animal care strategies.`,
+    links: [
+      {
+        Github: 'https://github.com/brent-thomas/Pet-Shelter-Analysis'
+      }
+    ]
+
+  },
+  {
+    type:'project',
     title:'Grocery Store Inventory',
     description:'The Grocery Inventory Management System, developed in Python with SQLAlchemy, is a comprehensive tool for managing grocery inventories. It features functionalities like product detail viewing, inventory analysis, and data backup, ideal for streamlining inventory processes in small to medium grocery stores.',
     links: [
