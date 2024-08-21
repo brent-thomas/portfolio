@@ -22,10 +22,10 @@ const Connect = () => {
                 <p>GitHub</p>
             </Link>
 
-            <Link target="_blank" to="https://www.hackerrank.com/profile/brent48" className={styles.socialLink}>
+            {/* <Link target="_blank" to="https://www.hackerrank.com/profile/brent48" className={styles.socialLink}>
                 <FontAwesomeIcon icon={faHackerrank} className={styles.icon} id={styles.hackerrank}/>
                 <p>HackerRank</p>
-            </Link>
+            </Link> */}
 
             <Link target="_blank" to="https://teamtreehouse.com/profiles/brentthomas4" className={styles.socialLink}>
                 <FontAwesomeIcon icon={faFrog} className={styles.icon} id={styles.treehouse}/>

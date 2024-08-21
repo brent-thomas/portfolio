@@ -34,8 +34,19 @@ const items = [
         Github: 'https://github.com/brent-thomas/gwss',
       },
       {
-        View: 'https://georgiawheatstrawsales.com'
+        View: 'https://zapurls.com'
       }
+    ]
+  },
+  {
+    type:'project',
+    title: 'Tic Tac Toe',
+    description: `A classic Tic-Tac-Toe game built using HTML, CSS, and JavaScript.
+    This interactive game features smooth animations, a dynamic turn indicator, and checks for win conditions or a tie.`,
+    links: [
+      {
+        Github: 'https://github.com/brent-thomas/Tic-Tac-Toe',
+      },
     ]
   }
  
